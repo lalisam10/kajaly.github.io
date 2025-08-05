@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bestie Friendship Day 💖</title>
+  <style>
+    /* Reset + Fonts */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fff0f5;
+      color: #333;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #ffe6f0;
+      padding: 15px;
+    }
+
+    nav ul {
+      list-style: none; /* ✅ Remove bullets */
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #d63384;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #ffb6c1;
+      color: white;
+    }
+
+    /* Pages */
+    .page {
+      display: none;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fade 0.5s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #c2185b;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .message-box {
+      background-color: #ffe6f0;
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      margin-top: 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e75480;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#" class="active" data-page="home">Home</a></li>
+      <li><a href="#" data-page="friendship">Our Friendship</a></li>
+      <li><a href="#" data-page="memories">Memories</a></li>
+      <li><a href="#" data-page="love">Love</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sections -->
+  <div class="page active" id="home">
+    <h2>🌸 Welcome to Our Magical Adventure 🌸</h2>
+    <p>Hey bestie! This little site is just for you, it was for friendship day but i'm bit late 💖</p>
+    <p>Let’s relive the memories that made our bond unbreakable.</p>
+    <button class="btn" onclick="switchPage('friendship')">✨ Start Journey ✨</button>
+  </div>
+
+  <div class="page" id="friendship">
+    <h2>🤗 Our Friendship</h2>
+    <div class="message-box">
+      <p>From strangers to inseparable besties,</p>
+      <p>you've filled my life with joy, comfort, and endless laughs.</p>
+      <p>You're not just a friend — you're my chosen family.</p>
+    </div>
+    <button class="btn" onclick="switchPage('memories')">Next →</button>
+  </div>
+
+  <div class="page" id="memories">
+    <h2>📸 Memories</h2>
+    <div class="message-box">
+      <p><strong>First Meeting:</strong> That random moment that changed everything.</p>
+      <p><strong>Laughter:</strong> our texts, stupid inside jokes — priceless.</p>
+      <p><strong>Adventures:</strong> From lazy days to crazy nights, you’re my favorite partner-in-crime,You came into my life like a gentle light and stayed like a forever feeling. Through storms and sunshine, you’ve never let go. You’re my peace in the chaos, my favorite kind of love—the kind that feels like home, grows deeper with time, and stays soft through everything. I don’t just feel loved by you—I feel seen, understood, and truly lucky to have you.
+
+</p>
+    </div>
+    <button class="btn" onclick="switchPage('love')">Next →</button>
+  </div>
+
+  <div class="page" id="love">
+    <h2>❤️ How Much I Love You ❤️</h2>
+    <div class="message-box">
+      <p>You are my safe place.</p>
+      <p>You’ve stood by me when I didn’t even stand by myself.</p>
+      <p>I love you more than words can say.</p>
+      <p>Thank you for being my best friend, my soulmate, my forever. ❤️</p>
+    </div>
+    <button class="btn" onclick="switchPage('home')">Back to Start 🔁</button>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const navLinks = document.querySelectorAll("nav ul li a");
+    const pages = document.querySelectorAll(".page");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const pageId = link.dataset.page;
+
+        // Activate page
+        pages.forEach(p => p.classList.remove("active"));
+        document.getElementById(pageId).classList.add("active");
+
+        // Highlight current nav
+        navLinks.forEach(nav => nav.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    function switchPage(id) {
+      pages.forEach(p => p.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+
+      navLinks.forEach(nav => nav.classList.remove("active"));
+      const newActive = document.querySelector(`nav a[data-page="${id}"]`);
+      if (newActive) newActive.classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
